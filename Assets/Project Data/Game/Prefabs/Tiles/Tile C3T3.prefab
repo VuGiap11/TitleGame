@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 212022070257370493, guid: 09b0f45e5d025574ba074594d6c8cce6,
         type: 3}
       propertyPath: m_Name
-      value: Matchable Object C2T8
+      value: Tile C3T3
       objectReference: {fileID: 0}
     - target: {fileID: 3304400368160141314, guid: 09b0f45e5d025574ba074594d6c8cce6,
         type: 3}
@@ -73,7 +73,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 09b5231e69025f849949b77569dd7c59,
+      objectReference: {fileID: 21300000, guid: 03879ec23b3d15145b43f791c761d2a9,
         type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
