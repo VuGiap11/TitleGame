@@ -1,7 +1,9 @@
+using NTPackage.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Jobs;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,8 +25,9 @@ namespace TitleGame
         private static List<LivesIndicator> indicators = new List<LivesIndicator>();
         private static List<AddLivesPanel> addLivesPanels = new List<AddLivesPanel>();
 
-        public static bool IsMaxLives => Lives == instance.data.maxLivesCount;
+       // public static bool IsMaxLives => Lives == instance.data.maxLivesCount;
 
+        public static bool IsMaxLives => Lives == Contans.maxLivesCount;
         private void Awake()
         {
         }
@@ -105,10 +108,11 @@ namespace TitleGame
                 indicator.SetInfinite(save.infiniteLives);
             }
 
-            foreach(var panel in addLivesPanels)
-            {
-                panel.SetLivesCount(value);
-            }
+            //foreach(var panel in addLivesPanels)
+            //{
+            //    panel.SetLivesCount(value);
+            //}
+            PopupManager.Instance.UpdateDataUI(PopupCode.AddLivesPanel);
         }
 
         public static void RemoveLife()
@@ -158,11 +162,15 @@ namespace TitleGame
                 indicator.FullText();
             }
 
-            foreach (var panel in addLivesPanels)
+            //foreach (var panel in addLivesPanels)
+            //{
+            //    panel.SetTime(data.fullText);
+            //}
+            AddLivesManager AddLivesManager = PopupManager.Instance.GetPopupUIByCode(PopupCode.AddLivesPanel) as AddLivesManager;
+            if (AddLivesManager != null)
             {
-                panel.SetTime(data.fullText);
+                AddLivesManager.SetTime(Contans.fullText);
             }
-
             yield return LivesCoroutine();
         }
 
@@ -187,11 +195,15 @@ namespace TitleGame
                     indicator.SetDuration(oneLifeSpan - timespan);
                 }
 
-                foreach (var panel in addLivesPanels)
+                //foreach (var panel in addLivesPanels)
+                //{
+                //    panel.SetTime(string.Format(data.timespanFormat, oneLifeSpan - timespan));
+                //}
+                AddLivesManager AddLives = PopupManager.Instance.GetPopupUIByCode(PopupCode.AddLivesPanel) as AddLivesManager;
+                if (AddLives != null)
                 {
-                    panel.SetTime(string.Format(data.timespanFormat, oneLifeSpan - timespan));
+                    AddLives.SetTime(string.Format(Contans.timespanFormat, oneLifeSpan - timespan));
                 }
-
                 yield return wait;
             }
 
@@ -200,11 +212,15 @@ namespace TitleGame
                 indicator.FullText();
             }
 
-            foreach (var panel in addLivesPanels)
+            //foreach (var panel in addLivesPanels)
+            //{
+            //    panel.SetTime(data.fullText);
+            //}
+            AddLivesManager AddLivesManager = PopupManager.Instance.GetPopupUIByCode(PopupCode.AddLivesPanel) as AddLivesManager;
+            if (AddLivesManager != null)
             {
-                panel.SetTime(data.fullText);
+                AddLivesManager.SetTime(Contans.fullText);
             }
-
             livesCoroutine = null;
         }
 

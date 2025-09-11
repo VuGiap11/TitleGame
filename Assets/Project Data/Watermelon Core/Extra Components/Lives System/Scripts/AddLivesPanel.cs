@@ -44,12 +44,12 @@ namespace TitleGame
 
         private void OnEnable()
         {
-            LivesManager.AddPanel(this);
+            //LivesManager.AddPanel(this);
         }
 
         private void OnDisable()
         {
-            LivesManager.RemovePanel(this);
+            //LivesManager.RemovePanel(this);
         }
 
         public void Show(SimpleBoolCallback onPanelClosed = null)

@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TitleGame.IAPStore;
 using TitleGame.Map;
+using NTPackage.UI;
 
 namespace TitleGame
 {
@@ -54,7 +55,7 @@ namespace TitleGame
 
             iapStoreButton.Button.onClick.AddListener(IAPStoreButton);
             noAdsButton.Button.onClick.AddListener(NoAdButton);
-            coinsPanel.AddButton.onClick.AddListener(AddCoinsButton);
+           // coinsPanel.AddButton.onClick.AddListener(AddCoinsButton);
             playButton.onClick.AddListener(PlayButton);
 
             NotchSaveArea.RegisterRectTransform(safeAreaRectTransform);
@@ -74,8 +75,8 @@ namespace TitleGame
             livesIndicatorScalable.Show();
 
             UILevelNumberText.Show();
-            playButtonText.text = "LEVEL " + (LevelController.MaxReachedLevelIndex + 1);
-
+            //playButtonText.text = "LEVEL " + (LevelController.MaxReachedLevelIndex + 1);
+            playButtonText.text = "LEVEL " + (DataController.instance.dataPlayerController.level + 1);
             showHideStoreAdButtonDelayTweenCase = Tween.DelayedCall(0.12f, delegate
             {
                 ShowAdButton();
@@ -198,11 +199,14 @@ namespace TitleGame
 
         #region Buttons
 
+
+        // play game
         private void PlayButton()
         {
             AudioController.PlaySound(AudioController.Sounds.buttonSound);
 
-            OnPlayTriggered(LevelController.MaxReachedLevelIndex);
+            //OnPlayTriggered(LevelController.MaxReachedLevelIndex);
+            OnPlayTriggered(DataController.instance.dataPlayerController.level);
         }
 
         private void OnLevelOnMapSelected(int levelId)
@@ -223,16 +227,17 @@ namespace TitleGame
             }
             else
             {
-                addLivesPanel.Show((bool resultSuccessfull) =>
-                {
-                    if (resultSuccessfull)
-                    {
-                        // start level
-                        GameController.LoadLevel(levelId);
+                //addLivesPanel.Show((bool resultSuccessfull) =>
+                //{
+                //    if (resultSuccessfull)
+                //    {
+                //        // start level
+                //        GameController.LoadLevel(levelId);
 
-                        Tween.DelayedCall(2f, LivesManager.RemoveLife);
-                    }
-                });
+                //        Tween.DelayedCall(2f, LivesManager.RemoveLife);
+                //    }
+                //});
+                PopupManager.Instance.OnUI(PopupCode.AddLivesPanel);
             }
         }
 

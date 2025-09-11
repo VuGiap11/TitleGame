@@ -1,3 +1,4 @@
+using NTPackage.UI;
 using System;
 using TMPro;
 using UnityEngine;
@@ -14,11 +15,11 @@ namespace TitleGame
 
         [SerializeField] Button menuButton;
         [SerializeField] Button replayButton;
-        [SerializeField] Button reviveButton;
+       // [SerializeField] Button reviveButton;
 
         [SerializeField] UIScaleAnimation menuButtonScalable;
         [SerializeField] UIScaleAnimation replayButtonScalable;
-        [SerializeField] UIScaleAnimation reviveButtonScalable;
+       // [SerializeField] UIScaleAnimation reviveButtonScalable;
 
         [SerializeField] LivesIndicator livesIndicator;
         [SerializeField] AddLivesPanel addLivesPanel;
@@ -29,7 +30,7 @@ namespace TitleGame
         {
             menuButton.onClick.AddListener(MenuButton);
             replayButton.onClick.AddListener(ReplayButton);
-            reviveButton.onClick.AddListener(ReviveButton);
+            //reviveButton.onClick.AddListener(ReviveButton);
 
             LivesManager.AddIndicator(livesIndicator);
             NotchSaveArea.RegisterRectTransform(safeAreaRectTransform);
@@ -42,7 +43,7 @@ namespace TitleGame
             levelFailed.Hide(immediately: true);
             menuButtonScalable.Hide(immediately: true);
             replayButtonScalable.Hide(immediately: true);
-            reviveButtonScalable.Hide(immediately: true);
+           // reviveButtonScalable.Hide(immediately: true);
 
             float fadeDuration = 0.3f;
             backgroundFade.Show(fadeDuration);
@@ -53,9 +54,9 @@ namespace TitleGame
 
                 menuButtonScalable.Show(scaleMultiplier: 1.05f, delay: 0.75f);
                 replayButtonScalable.Show(scaleMultiplier: 1.05f, delay: 0.75f);
-                reviveButtonScalable.Show(scaleMultiplier: 1.05f, delay: 0.25f);
+                //reviveButtonScalable.Show(scaleMultiplier: 1.05f, delay: 0.25f);
 
-                continuePingPongCase = reviveButtonScalable.RectTransform.DOPingPongScale(1.0f, 1.05f, 0.9f, Ease.Type.QuadIn, Ease.Type.QuadOut, unscaledTime: true);
+                //continuePingPongCase = reviveButtonScalable.RectTransform.DOPingPongScale(1.0f, 1.05f, 0.9f, Ease.Type.QuadIn, Ease.Type.QuadOut, unscaledTime: true);
 
                 UIController.OnPageOpened(this);
             });
@@ -80,12 +81,12 @@ namespace TitleGame
 
         #region Buttons 
 
-        private void ReviveButton()
-        {
-            AudioController.PlaySound(AudioController.Sounds.buttonSound);
+        //private void ReviveButton()
+        //{
+        //    AudioController.PlaySound(AudioController.Sounds.buttonSound);
 
-            AdsManager.ShowRewardBasedVideo(ReviveCallback);
-        }
+        //    AdsManager.ShowRewardBasedVideo(ReviveCallback);
+        //}
 
         private void ReviveCallback(bool watchedRV)
         {
@@ -111,7 +112,8 @@ namespace TitleGame
             }
             else
             {
-                addLivesPanel.Show();
+                // addLivesPanel.Show();
+                PopupManager.Instance.OnUI(PopupCode.AddLivesPanel);
             }
         }
 

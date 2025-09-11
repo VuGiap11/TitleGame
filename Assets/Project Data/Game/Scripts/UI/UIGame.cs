@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NTPackage.UI;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -83,7 +84,8 @@ namespace TitleGame
 
         public void ShowExitPopUp()
         {
-            exitPopUp.Show();
+            //exitPopUp.Show();
+            PopupManager.Instance.OnUI(PopupCode.QuitPopUpPanel);
             AudioController.PlaySound(AudioController.Sounds.buttonSound);
         }
 

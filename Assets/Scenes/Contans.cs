@@ -12,8 +12,8 @@ namespace TitleGame
         public static string StartScene = "Game";
         public static int maxLivesCount = 5;
         public static int oneLifeRestorationDuration = 1200;
-        public string fullText = "FULL!";
-        public string timespanFormat = "{0:mm\\:ss}";
-        public string longTimespanFormat = "{0:hh\\:mm\\:ss}";
+        public static string fullText = "FULL!";
+        public static string timespanFormat = "{0:mm\\:ss}";
+        public static string longTimespanFormat = "{0:hh\\:mm\\:ss}";
     }
 }

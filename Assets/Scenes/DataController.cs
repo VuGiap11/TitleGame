@@ -3,14 +3,14 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Rubik.TitleGame
+namespace TitleGame
 {
     [System.Serializable]
     public class DataPlayerController
     {
         public int gold;
         public bool isRemoveADS;
-        public int highLevel;
+        public int level;
     }
     public class DataController : MonoBehaviour
     {
@@ -45,7 +45,7 @@ namespace Rubik.TitleGame
             {
                 this.dataPlayerController.gold =0;
                 this.dataPlayerController.isRemoveADS = false;
-                this.dataPlayerController.highLevel = 0;
+                this.dataPlayerController.level = 0;
                 Debug.LogWarning("No saved player data found.");
             }
             SaveData();

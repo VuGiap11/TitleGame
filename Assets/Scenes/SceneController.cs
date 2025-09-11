@@ -14,6 +14,7 @@ namespace TitleGame
                 instance = this;
         }
 
+
         public void LoadToSceneStartGame()
         {
             SceneManager.LoadScene(Contans.StartScene);

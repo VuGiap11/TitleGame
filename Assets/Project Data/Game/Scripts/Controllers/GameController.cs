@@ -146,7 +146,8 @@ namespace TitleGame
 
         public static void LoadNextLevel(SimpleCallback onLevelLoaded = null)
         {
-            LoadLevel(LevelController.DisplayedLevelIndex, onLevelLoaded);
+          //  LoadLevel(LevelController.DisplayedLevelIndex, onLevelLoaded);
+            LoadLevel(DataController.instance.dataPlayerController.level, onLevelLoaded);
         }
 
         public static void ReplayLevel()

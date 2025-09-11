@@ -85,6 +85,7 @@ namespace TitleGame
             //RewardManager.Instance.LoadData();
             //IAPManager.Instance.Init();
             //AdsManager.instance.Init();
+            DataController.instance.LoadData();
         }
         //private void RoteIcoinSetting()
         //{

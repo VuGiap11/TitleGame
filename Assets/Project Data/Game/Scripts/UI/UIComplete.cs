@@ -158,31 +158,46 @@ namespace TitleGame
             homeButton.interactable = false;
             nextLevelButton.interactable = false;
 
-            AdsManager.ShowRewardBasedVideo((bool success) =>
-            {
-                if (success)
+            //AdsManager.ShowRewardBasedVideo((bool success) =>
+            //{
+            //    if (success)
+            //    {
+            //        int rewardMult = 3;
+
+            //        multiplyRewardButtonFade.Hide(immediately: true);
+            //        multiplyRewardButton.interactable = false;
+
+            //        ShowRewardLabel(currentReward * rewardMult, false, 0.3f, delegate
+            //        {
+            //            FloatingCloud.SpawnCurrency(coinsHash, rewardLabel.RectTransform, coinsPanelScalable.RectTransform, 10, "", () =>
+            //            {
+            //                CurrenciesController.Add(CurrencyType.Coins, currentReward * rewardMult);
+
+            //                homeButton.interactable = true;
+            //                nextLevelButton.interactable = true;
+            //            });
+            //        });
+            //    }
+            //    else
+            //    {
+            //        NextLevelButton();
+            //    }
+            //});
+                int rewardMult = 3;
+
+                multiplyRewardButtonFade.Hide(immediately: true);
+                multiplyRewardButton.interactable = false;
+
+                ShowRewardLabel(currentReward * rewardMult, false, 0.3f, delegate
                 {
-                    int rewardMult = 3;
-
-                    multiplyRewardButtonFade.Hide(immediately: true);
-                    multiplyRewardButton.interactable = false;
-
-                    ShowRewardLabel(currentReward * rewardMult, false, 0.3f, delegate
+                    FloatingCloud.SpawnCurrency(coinsHash, rewardLabel.RectTransform, coinsPanelScalable.RectTransform, 10, "", () =>
                     {
-                        FloatingCloud.SpawnCurrency(coinsHash, rewardLabel.RectTransform, coinsPanelScalable.RectTransform, 10, "", () =>
-                        {
-                            CurrenciesController.Add(CurrencyType.Coins, currentReward * rewardMult);
+                        CurrenciesController.Add(CurrencyType.Coins, currentReward * rewardMult);
 
-                            homeButton.interactable = true;
-                            nextLevelButton.interactable = true;
-                        });
+                        homeButton.interactable = true;
+                        nextLevelButton.interactable = true;
                     });
-                }
-                else
-                {
-                    NextLevelButton();
-                }
-            });
+                });
         }
 
         public void NextLevelButton()

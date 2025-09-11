@@ -60,10 +60,10 @@ namespace NTPackage.UI
         public Action ActionOnUI;
         public virtual void OnUI(object data = null)
         {
-            if (this.popupCode != PopupCode.LoadingBgUI)
-            {
-                SoundController.instance.AudioExitButton();
-            }
+            //if (this.popupCode != PopupCode.LoadingBgUI)
+            //{
+            //    SoundController.instance.AudioExitButton();
+            //}
             this.Show();
             this.UpdateData();
         }
@@ -71,10 +71,10 @@ namespace NTPackage.UI
         public Action ActionOffUI;
         public virtual void OffUI()
         {
-            if (this.popupCode != PopupCode.LoadingBgUI)
-            {
-                SoundController.instance.AudioExitButton();
-            }
+            //if (this.popupCode != PopupCode.LoadingBgUI)
+            //{
+            //    SoundController.instance.AudioExitButton();
+            //}
             try
             {
                 this.ActionOffUI.Invoke();

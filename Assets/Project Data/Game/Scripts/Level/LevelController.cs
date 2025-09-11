@@ -178,7 +178,8 @@ namespace TitleGame
 
             UIGame gameUI = UIController.GetPage<UIGame>();
             gameUI.PowerUpsUIController.OnLevelStarted(levelIndex);
-            gameUI.UpdateLevelNumber(levelIndex + 1);
+           // gameUI.UpdateLevelNumber(levelIndex + 1);
+            gameUI.UpdateLevelNumber(DataController.instance.dataPlayerController.level + 1);
 
             levelObject.SetActive(true);
 
@@ -269,13 +270,14 @@ namespace TitleGame
             {
                 levelSave.IsPlayingRandomLevel = false;
 
-                levelSave.DisplayLevelIndex++;
-
-                if (levelSave.DisplayLevelIndex > levelSave.MaxReachedLevelIndex)
-                {
-                    levelSave.MaxReachedLevelIndex = levelSave.DisplayLevelIndex;
-                    firstTimeCompletedLevel = true;
-                }
+                //levelSave.DisplayLevelIndex++;
+                DataController.instance.dataPlayerController.level++;
+                DataController.instance.SaveData();
+                //if (levelSave.DisplayLevelIndex > levelSave.MaxReachedLevelIndex)
+                //{
+                //    levelSave.MaxReachedLevelIndex = levelSave.DisplayLevelIndex;
+                //    firstTimeCompletedLevel = true;
+                //}
 
                 GameController.OnLevelCompleted();
 

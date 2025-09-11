@@ -17,11 +17,11 @@ namespace TitleGame
         [Space]
         [SerializeField] TextMeshProUGUI text;
         [SerializeField] Image icon;
-        [SerializeField] Button addButton;
+       // [SerializeField] Button addButton;
 
         public string Text { get => text.text; set => text.text = value; }
         public Sprite Icon { get => icon.sprite; set => icon.sprite = value; }
-        public Button AddButton => addButton;
+       // public Button AddButton => addButton;
 
         private Currency currency;
         public Currency Currency => currency;

@@ -1,7 +1,10 @@
+using NTPackage.UI;
 using System;
 using TMPro;
+using Unity.Jobs;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 namespace TitleGame
@@ -27,15 +30,27 @@ namespace TitleGame
             
             Data = data;
 
-            if(addLivesPanel != null)
-            {
-                addButton.gameObject.SetActive(true);
-                addButton.onClick.AddListener(() => addLivesPanel.Show());
-            } else
+            //if(addLivesPanel != null)
+            //{
+            //    addButton.gameObject.SetActive(true);
+            //    //addButton.onClick.AddListener(() => addLivesPanel.Show());
+            //    addButton.onClick.AddListener(() => PopupManager.Instance.OnUI(PopupCode.AddLivesPanel));
+            //} else
+            //{
+            //    addButton.gameObject.SetActive(false);
+            //}
+            if (LivesManager.Lives >= 5)
             {
                 addButton.gameObject.SetActive(false);
-            }
+                Debug.Log("gggggggggggggggggggg" + LivesManager.Lives);
 
+            }
+            else
+            {
+                Debug.Log("aandbdbdd" +  LivesManager.Lives);
+                addButton.gameObject.SetActive(true);
+            }
+            addButton.onClick.AddListener(() => PopupManager.Instance.OnUI(PopupCode.AddLivesPanel));
             isInitialised = true;
         }
 
@@ -51,8 +66,9 @@ namespace TitleGame
 
             livesCountText.text = count.ToString();
 
-            addButton.gameObject.SetActive(count != Contans.maxLivesCount && addLivesPanel != null);
-            if(count == Contans.maxLivesCount)
+            //addButton.gameObject.SetActive(count != Contans.maxLivesCount && addLivesPanel != null);
+            addButton.gameObject.SetActive(count != Contans.maxLivesCount);
+            if (count == Contans.maxLivesCount)
             {
                 FullText();
             }
