@@ -128,7 +128,7 @@ namespace TitleGame
                 onLevelLoaded?.Invoke();
             });
 
-            if(animateDock)
+            if (animateDock)
                 dock.PlayAppearAnimation();
 
             LoadBackground(backgroundData);
@@ -163,7 +163,7 @@ namespace TitleGame
                 levelSave.LastPlayerLevelIndex = realLevelIndex;
                 levelSave.RealLevelIndex = realLevelIndex;
 
-                if(realLevelIndex != levelIndex)
+                if (realLevelIndex != levelIndex)
                 {
                     levelSave.IsPlayingRandomLevel = true;
                 }
@@ -178,7 +178,7 @@ namespace TitleGame
 
             UIGame gameUI = UIController.GetPage<UIGame>();
             gameUI.PowerUpsUIController.OnLevelStarted(levelIndex);
-           // gameUI.UpdateLevelNumber(levelIndex + 1);
+            // gameUI.UpdateLevelNumber(levelIndex + 1);
             gameUI.UpdateLevelNumber(DataController.instance.dataPlayerController.level + 1);
 
             levelObject.SetActive(true);
@@ -216,7 +216,7 @@ namespace TitleGame
             if (Background != null)
                 Destroy(Background.gameObject);
 
-            if(backgroundData == null)
+            if (backgroundData == null)
                 backgroundData = database.GetLastAvailableBackgroundData();
 
             if (backgroundData != null)
@@ -272,6 +272,15 @@ namespace TitleGame
 
                 //levelSave.DisplayLevelIndex++;
                 DataController.instance.dataPlayerController.level++;
+                if (DataController.instance.dataPlayerController.level >= this.database.Levels.Length - 1)
+                {
+                    int number = UnityEngine.Random.Range(50, this.database.Levels.Length);
+                    DataController.instance.dataPlayerController.levelrandom = number;
+                }
+                else
+                {
+                    DataController.instance.dataPlayerController.levelrandom = DataController.instance.dataPlayerController.level;
+                }
                 DataController.instance.SaveData();
                 //if (levelSave.DisplayLevelIndex > levelSave.MaxReachedLevelIndex)
                 //{
@@ -439,9 +448,9 @@ namespace TitleGame
             List<TileBehavior> neighbourTiles = new List<TileBehavior>();
 
             ElementPosition[] neighbourPositions = new ElementPosition[] { elementPosition.UpNeighbourPos, elementPosition.RightNeighbourPos, elementPosition.BottomNeighbourPos, elementPosition.LeftNeighbourPos };
-            for(int i = 0; i < neighbourPositions.Length; i++)
+            for (int i = 0; i < neighbourPositions.Length; i++)
             {
-                if(levelRepresentation.IsTileExists(neighbourPositions[i]))
+                if (levelRepresentation.IsTileExists(neighbourPositions[i]))
                 {
                     neighbourTiles.Add(levelRepresentation.Layers[neighbourPositions[i]].Tile);
                 }
@@ -498,7 +507,7 @@ namespace TitleGame
             {
                 callback?.Invoke();
                 return false;
-            } 
+            }
 
             int revertedTiles = 0;
             foreach (TileBehavior tile in removedTiles)
@@ -534,7 +543,7 @@ namespace TitleGame
             int clickableTilesCount = 0;
 
             List<TileBehavior> tiles = levelRepresentation.Tiles;
-            foreach(TileBehavior tile in tiles)
+            foreach (TileBehavior tile in tiles)
             {
                 if (tile.IsClickable)
                 {

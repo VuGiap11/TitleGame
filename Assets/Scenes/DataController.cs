@@ -11,6 +11,7 @@ namespace TitleGame
         public int gold;
         public bool isRemoveADS;
         public int level;
+        public int levelrandom;
     }
     public class DataController : MonoBehaviour
     {
@@ -43,9 +44,10 @@ namespace TitleGame
             }
             else
             {
-                this.dataPlayerController.gold =0;
+                this.dataPlayerController.gold =2000;
                 this.dataPlayerController.isRemoveADS = false;
-                this.dataPlayerController.level = 0;
+                this.dataPlayerController.level = 199;
+                this.dataPlayerController.levelrandom = 0;
                 Debug.LogWarning("No saved player data found.");
             }
             SaveData();

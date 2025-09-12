@@ -20,6 +20,7 @@ namespace TitleGame
         [SerializeField] Button exitButton;
         [SerializeField] UIFadeAnimation exitButtonFadeAnimation;
 
+        [SerializeField] CurrencyUIPanelSimple currencyPanel;
         //[SerializeField] GameObject devOverlay;
 
         //[LineSpacer("Tutorial")]
@@ -86,6 +87,7 @@ namespace TitleGame
         {
             //exitPopUp.Show();
             PopupManager.Instance.OnUI(PopupCode.QuitPopUpPanel);
+            currencyPanel.SetTextGold();
             AudioController.PlaySound(AudioController.Sounds.buttonSound);
         }
 

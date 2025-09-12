@@ -27,12 +27,14 @@ namespace TitleGame
 
         public bool EnoughMoneyOnBalance()
         {
-            return CurrenciesController.HasAmount(currencyType, price);
+            //return CurrenciesController.HasAmount(currencyType, price);
+            return CurrenciesController.HasAmount(price);
         }
 
         public void SubstractFromBalance()
         {
-            CurrenciesController.Substract(currencyType, price);
+            //CurrenciesController.Substract(currencyType, price);
+            CurrenciesController.Substract(price);
         }
     }
 }

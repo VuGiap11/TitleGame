@@ -57,11 +57,14 @@ namespace TitleGame
             onModuleInitialised = null;
         }
 
-        public static bool HasAmount(CurrencyType currencyType, int amount)
+        //public static bool HasAmount(CurrencyType currencyType, int amount)
+        //{
+        //    return currencies[currenciesLink[currencyType]].Amount >= amount;
+        //}
+        public static bool HasAmount( int amount)
         {
-            return currencies[currenciesLink[currencyType]].Amount >= amount;
+            return DataController.instance.dataPlayerController.gold >= amount;
         }
-
         public static int Get(CurrencyType currencyType)
         {
             return currencies[currenciesLink[currencyType]].Amount;
@@ -85,30 +88,52 @@ namespace TitleGame
             currency.InvokeChangeEvent(0);
         }
 
-        public static void Add(CurrencyType currencyType, int amount)
+        //public static void Add(CurrencyType currencyType, int amount)
+        //{
+        //    Currency currency = currencies[currenciesLink[currencyType]];
+
+        //    currency.Amount += amount;
+
+        //    // Change save state to required
+        //    SaveController.MarkAsSaveIsRequired();
+
+        //    // Invoke currency change event;
+        //    currency.InvokeChangeEvent(amount);
+        //}
+        public static void Add(int amount)
         {
-            Currency currency = currencies[currenciesLink[currencyType]];
+            //Currency currency = currencies[currenciesLink[currencyType]];
 
-            currency.Amount += amount;
-
+            //currency.Amount += amount;
+            DataController.instance.dataPlayerController.gold += amount;
+            DataController.instance.SaveData();
             // Change save state to required
             SaveController.MarkAsSaveIsRequired();
 
             // Invoke currency change event;
-            currency.InvokeChangeEvent(amount);
+           // currency.InvokeChangeEvent(amount);
         }
+        //public static void Substract(CurrencyType currencyType, int amount)
+        //{
+        //    Currency currency = currencies[currenciesLink[currencyType]];
 
-        public static void Substract(CurrencyType currencyType, int amount)
+        //    currency.Amount -= amount;
+
+        //    // Change save state to required
+        //    SaveController.MarkAsSaveIsRequired();
+
+        //    // Invoke currency change event
+        //    currency.InvokeChangeEvent(-amount);
+        //}
+        public static void Substract(int amount)
         {
-            Currency currency = currencies[currenciesLink[currencyType]];
-
-            currency.Amount -= amount;
-
+            DataController.instance.dataPlayerController.gold -= amount;
             // Change save state to required
+            DataController.instance.SaveData();
             SaveController.MarkAsSaveIsRequired();
 
             // Invoke currency change event
-            currency.InvokeChangeEvent(-amount);
+           // currency.InvokeChangeEvent(-amount);
         }
 
         public static void SubscribeGlobalCallback(CurrencyChangeDelegate currencyChange)

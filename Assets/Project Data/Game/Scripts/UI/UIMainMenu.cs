@@ -55,7 +55,7 @@ namespace TitleGame
 
             iapStoreButton.Button.onClick.AddListener(IAPStoreButton);
             noAdsButton.Button.onClick.AddListener(NoAdButton);
-           // coinsPanel.AddButton.onClick.AddListener(AddCoinsButton);
+            // coinsPanel.AddButton.onClick.AddListener(AddCoinsButton);
             playButton.onClick.AddListener(PlayButton);
 
             NotchSaveArea.RegisterRectTransform(safeAreaRectTransform);
@@ -206,7 +206,7 @@ namespace TitleGame
             AudioController.PlaySound(AudioController.Sounds.buttonSound);
 
             //OnPlayTriggered(LevelController.MaxReachedLevelIndex);
-            OnPlayTriggered(DataController.instance.dataPlayerController.level);
+            OnPlayTriggered(DataController.instance.dataPlayerController.levelrandom);
         }
 
         private void OnLevelOnMapSelected(int levelId)
@@ -264,7 +264,7 @@ namespace TitleGame
             {
                 UIController.OnPageClosedEvent -= OnIapStoreClosed;
 
-               // MapBehavior.EnableScroll();
+                // MapBehavior.EnableScroll();
                 UIController.ShowPage<UIMainMenu>();
             }
         }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using NTPackage.UI;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -143,7 +144,8 @@ namespace TitleGame
             {
                 AudioController.PlaySound(AudioController.Sounds.buttonSound);
 
-                PUController.PowerUpsUIController.PowerUpPurchasePanel.Show(settings);
+               // PUController.PowerUpsUIController.PowerUpPurchasePanel.Show(settings);
+               PopupManager.Instance.OnUI(PopupCode.PopwerUpPurchasePanel, settings);
             }
         }
 

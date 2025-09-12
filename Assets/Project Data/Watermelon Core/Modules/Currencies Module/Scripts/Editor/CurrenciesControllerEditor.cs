@@ -11,14 +11,14 @@ namespace TitleGame
 
         private void OnEnable()
         {
-            currenciesController = (CurrenciesController)target;         
+            currenciesController = (CurrenciesController)target;
         }
 
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
 
-            if(currenciesController.CurrenciesDatabase == null)
+            if (currenciesController.CurrenciesDatabase == null)
             {
                 return;
             }
@@ -36,17 +36,20 @@ namespace TitleGame
 
                 if (GUILayout.Button("+10", WatermelonEditor.Styles.button_03))
                 {
-                    CurrenciesController.Add(currencies[i].CurrencyType, 10);
+                    //CurrenciesController.Add(currencies[i].CurrencyType, 10);
+                    CurrenciesController.Add(10);
                 }
 
                 if (GUILayout.Button("+100", WatermelonEditor.Styles.button_03))
                 {
-                    CurrenciesController.Add(currencies[i].CurrencyType, 100);
+                    //  CurrenciesController.Add(currencies[i].CurrencyType, 100);
+                    CurrenciesController.Add(100);
                 }
 
                 if (GUILayout.Button("+1000", WatermelonEditor.Styles.button_03))
                 {
-                    CurrenciesController.Add(currencies[i].CurrencyType, 1000);
+                    // CurrenciesController.Add(currencies[i].CurrencyType, 1000);
+                    CurrenciesController.Add(1000);
                 }
 
                 EditorGUILayout.EndHorizontal();

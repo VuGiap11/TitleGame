@@ -80,14 +80,14 @@ namespace TitleGame
                 {
                     FloatingCloud.SpawnCurrency(coinsHash, rewardLabel.RectTransform, coinsPanelScalable.RectTransform, 10, "", () =>
                     {
-                        CurrenciesController.Add(CurrencyType.Coins, currentReward);
-
+                        //CurrenciesController.Add(CurrencyType.Coins, currentReward);
+                        CurrenciesController.Add( currentReward);
                         multiplyRewardButtonFade.Show();
                         multiplyRewardButton.interactable = true;
 
                         homeButtonScaleAnimation.Show(1.05f, 0.25f, 1f);
                         nextLevelButtonScaleAnimation.Show(1.05f, 0.25f, 1f);
-
+                        this.coinsPanelUI.SetTextGold();
                         homeButton.interactable = true;
                         nextLevelButton.interactable = true;
                     });
@@ -192,8 +192,9 @@ namespace TitleGame
                 {
                     FloatingCloud.SpawnCurrency(coinsHash, rewardLabel.RectTransform, coinsPanelScalable.RectTransform, 10, "", () =>
                     {
-                        CurrenciesController.Add(CurrencyType.Coins, currentReward * rewardMult);
-
+                       // CurrenciesController.Add(CurrencyType.Coins, currentReward * rewardMult);
+                        CurrenciesController.Add( currentReward * rewardMult);
+                        this.coinsPanelUI.SetTextGold();
                         homeButton.interactable = true;
                         nextLevelButton.interactable = true;
                     });

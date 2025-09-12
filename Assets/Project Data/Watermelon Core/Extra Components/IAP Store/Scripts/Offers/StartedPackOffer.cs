@@ -58,7 +58,8 @@ namespace TitleGame.IAPStore
             UIIAPStore iapStore = UIController.GetPage<UIIAPStore>();
             iapStore.SpawnCurrencyCloud((RectTransform)transform, CurrencyType.Coins, 15, () =>
             {
-                CurrenciesController.Add(CurrencyType.Coins, coinsAmount);
+               // CurrenciesController.Add(CurrencyType.Coins, coinsAmount);
+                CurrenciesController.Add( coinsAmount);
             });
 
             AdsManager.DisableForcedAd();

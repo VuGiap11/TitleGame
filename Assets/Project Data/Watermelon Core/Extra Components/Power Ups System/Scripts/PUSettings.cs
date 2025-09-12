@@ -70,7 +70,8 @@ namespace TitleGame
 
         public bool HasEnoughCurrency()
         {
-            return CurrenciesController.HasAmount(currencyType, price);
+            //return CurrenciesController.HasAmount(currencyType, price);
+            return CurrenciesController.HasAmount( price);
         }
     }
 }

@@ -42,7 +42,8 @@ namespace TitleGame.IAPStore
                     UIIAPStore iapStore = UIController.GetPage<UIIAPStore>();
                     iapStore.SpawnCurrencyCloud(cloudSpawnRectTransform, CurrencyType.Coins, floatingElementsAmount, () =>
                     {
-                        CurrenciesController.Add(CurrencyType.Coins, coinsAmount);
+                       // CurrenciesController.Add(CurrencyType.Coins, coinsAmount);
+                        CurrenciesController.Add( coinsAmount);
                     });
                 }
             });

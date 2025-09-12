@@ -55,21 +55,26 @@ namespace TitleGame
             Activate();
         }
 
+
         public void Redraw()
         {
-            text.text = useFormattedAmount ? currency.AmountFormatted : currency.Amount.ToString();
+            //text.text = useFormattedAmount ? currency.AmountFormatted : currency.Amount.ToString();
+            this.text.text = DataController.instance.dataPlayerController.gold.ToString();
         }
 
         public void SetAmount(int amount, bool format = true)
         {
-            text.text = format ? CurrenciesHelper.Format(amount) : amount.ToString();
+           // text.text = format ? CurrenciesHelper.Format(amount) : amount.ToString();
+            this.text.text = DataController.instance.dataPlayerController.gold.ToString();
         }
 
         public void Activate()
         {
             if(updateOnChange)
             {
-                currency.OnCurrencyChanged += OnCurrencyAmountChanged;
+                //currency.OnCurrencyChanged += OnCurrencyAmountChanged;
+               // this.text.text = DataController.instance.dataPlayerController.gold.ToString();
+                SetTextGold();
             }
         }
 
@@ -77,13 +82,20 @@ namespace TitleGame
         {
             if(updateOnChange)
             {
-                currency.OnCurrencyChanged -= OnCurrencyAmountChanged;
+                // currency.OnCurrencyChanged -= OnCurrencyAmountChanged;
+                SetTextGold();
             }
         }
 
         private void OnCurrencyAmountChanged(Currency currency, int amountDifference)
         {
             text.text = useFormattedAmount ? currency.AmountFormatted : currency.Amount.ToString();
+        }
+
+        public void SetTextGold()
+        {
+            this.text.text = DataController.instance.dataPlayerController.gold.ToString();
+            DataController.instance.SaveData();
         }
     }
 }

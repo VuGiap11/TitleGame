@@ -19,5 +19,6 @@ namespace NTPackage.UI
         LoadingBgUI,
         AddLivesPanel,
         QuitPopUpPanel,
+        PopwerUpPurchasePanel,
     }
 }

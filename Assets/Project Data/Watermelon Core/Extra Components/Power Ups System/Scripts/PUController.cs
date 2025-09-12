@@ -74,8 +74,8 @@ namespace TitleGame
                 PUBehavior powerUpBehavior = powerUpsLink[powerUpType];
                 if(powerUpBehavior.Settings.HasEnoughCurrency())
                 {
-                    CurrenciesController.Substract(powerUpBehavior.Settings.CurrencyType, powerUpBehavior.Settings.Price);
-
+                  //  CurrenciesController.Substract(powerUpBehavior.Settings.CurrencyType, powerUpBehavior.Settings.Price);
+                    CurrenciesController.Substract(powerUpBehavior.Settings.Price);
                     powerUpBehavior.Settings.Save.Amount += powerUpBehavior.Settings.PurchaseAmount;
 
                     powerUpsUIController.RedrawPanels();
@@ -84,8 +84,8 @@ namespace TitleGame
                 }
                 else
                 {
-                    UIController.ShowPage<UIIAPStore>();
-
+                   // UIController.ShowPage<UIIAPStore>();
+                   //them vao iap
                     return false;
                 }
             }
