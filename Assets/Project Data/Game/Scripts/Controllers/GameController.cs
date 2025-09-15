@@ -87,8 +87,11 @@ namespace TitleGame
 //            }
 
             UIController.ShowPage<UIMainMenu>();
+#if UNITY_EDITOR
             CheckIfNeedToAutoRunLevel();
+#endif
             GameLoading.MarkAsReadyToHide();
+    
         }
 
         public static void LoadLevel(int index, SimpleCallback onLevelLoaded = null)
@@ -213,7 +216,7 @@ namespace TitleGame
             set { EditorPrefs.SetBool(AUTO_RUN_LEVEL_SAVE_NAME, value); }
         }
 
-        private void CheckIfNeedToAutoRunLevel()
+        public void CheckIfNeedToAutoRunLevel()
         {
             if (AutoRunLevelInEditor)
                 LoadLevel(LevelController.DisplayedLevelIndex);

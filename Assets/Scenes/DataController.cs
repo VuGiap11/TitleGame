@@ -46,7 +46,7 @@ namespace TitleGame
             {
                 this.dataPlayerController.gold =2000;
                 this.dataPlayerController.isRemoveADS = false;
-                this.dataPlayerController.level = 199;
+                this.dataPlayerController.level = 0;
                 this.dataPlayerController.levelrandom = 0;
                 Debug.LogWarning("No saved player data found.");
             }

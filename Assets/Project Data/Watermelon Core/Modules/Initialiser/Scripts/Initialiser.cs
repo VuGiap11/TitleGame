@@ -7,7 +7,6 @@ using UnityEngine.EventSystems;
 namespace TitleGame
 {
     [DefaultExecutionOrder(-999)]
-   // [HelpURL("https://docs.google.com/document/d/1ORNWkFMZ5_Cc-BUgu9Ds1DjMjR4ozMCyr6p_GGdyCZk")]
     public class Initialiser : MonoBehaviour
     {
         [SerializeField] ProjectInitSettings initSettings;
@@ -39,7 +38,8 @@ namespace TitleGame
 #if MODULE_INPUT_SYSTEM
               //  eventSystem.gameObject.AddComponent<UnityEngine.InputSystem.UI.InputSystemUIInputModule>();
 #else
-                eventSystem.gameObject.AddComponent<StandaloneInputModule>();
+                // thua
+               // eventSystem.gameObject.AddComponent<StandaloneInputModule>();
 #endif
 
                 DontDestroyOnLoad(gameObject);
