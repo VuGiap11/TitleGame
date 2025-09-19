@@ -152,47 +152,47 @@ namespace TitleGame
 
         #region Development
 
-        public void ReloadDev()
-        {
-            GameController.ReplayLevel();
-        }
+        //public void ReloadDev()
+        //{
+        //    GameController.ReplayLevel();
+        //}
 
         //public void HideDev()
         //{
         //    devOverlay.SetActive(false);
         //}
 
-        public void OnLevelInputUpdatedDev(string newLevel)
-        {
-            int level = -1;
+        //public void OnLevelInputUpdatedDev(string newLevel)
+        //{
+        //    int level = -1;
 
-            if (int.TryParse(newLevel, out level))
-            {
-                LevelSave levelSave = SaveController.GetSaveObject<LevelSave>("level");
-                levelSave.DisplayLevelIndex = Mathf.Clamp((level - 1), 0, int.MaxValue);
-                levelSave.RealLevelIndex = levelSave.DisplayLevelIndex;
+        //    if (int.TryParse(newLevel, out level))
+        //    {
+        //        LevelSave levelSave = SaveController.GetSaveObject<LevelSave>("level");
+        //        levelSave.DisplayLevelIndex = Mathf.Clamp((level - 1), 0, int.MaxValue);
+        //        levelSave.RealLevelIndex = levelSave.DisplayLevelIndex;
 
-                GameController.ReplayLevel();
-            }
-        }
+        //        GameController.ReplayLevel();
+        //    }
+        //}
 
-        public void PrevLevelDev()
-        {
-            LevelSave levelSave = SaveController.GetSaveObject<LevelSave>("level");
-            levelSave.DisplayLevelIndex = Mathf.Clamp(levelSave.DisplayLevelIndex - 1, 0, int.MaxValue);
-            levelSave.RealLevelIndex = levelSave.DisplayLevelIndex;
+        //public void PrevLevelDev()
+        //{
+        //    LevelSave levelSave = SaveController.GetSaveObject<LevelSave>("level");
+        //    levelSave.DisplayLevelIndex = Mathf.Clamp(levelSave.DisplayLevelIndex - 1, 0, int.MaxValue);
+        //    levelSave.RealLevelIndex = levelSave.DisplayLevelIndex;
 
-            GameController.ReplayLevel();
-        }
+        //    GameController.ReplayLevel();
+        //}
 
-        public void NextLevelDev()
-        {
-            LevelSave levelSave = SaveController.GetSaveObject<LevelSave>("level");
-            levelSave.DisplayLevelIndex = levelSave.DisplayLevelIndex + 1;
-            levelSave.RealLevelIndex = levelSave.DisplayLevelIndex;
+        //public void NextLevelDev()
+        //{
+        //    LevelSave levelSave = SaveController.GetSaveObject<LevelSave>("level");
+        //    levelSave.DisplayLevelIndex = levelSave.DisplayLevelIndex + 1;
+        //    levelSave.RealLevelIndex = levelSave.DisplayLevelIndex;
 
-            GameController.ReplayLevel();
-        }
+        //    GameController.ReplayLevel();
+        //}
 
         #endregion
     }

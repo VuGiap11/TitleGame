@@ -159,7 +159,7 @@ namespace TitleGame
         {
             isGameActive = false;
 
-            UIController.ShowPage<UIMainMenu>();
+           // UIController.ShowPage<UIMainMenu>();
 
             LoadLevel(LevelController.DisplayedLevelIndex);
         }

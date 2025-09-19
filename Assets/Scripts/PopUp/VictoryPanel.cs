@@ -64,12 +64,13 @@ namespace TitleGame
             homeButton.interactable = true;
             nextLevelButton.interactable = true;
             multiplyRewardButton.interactable = false;
+            multiplyRewardButton.gameObject.SetActive(false);
             SetText(currentReward * rewardMult);
         }
 
         private void SetText(int number)
         {
-            this.rewardAmountText.text = number.ToString();
+            this.rewardAmountText.text ="+"+ number.ToString();
         }
         public void HomeButton()
         {
@@ -79,11 +80,13 @@ namespace TitleGame
             //{
             //    GameController.ReturnToMenu();
             //});
+            UIController.HidePage<UIGame>();
             GameController.ReturnToMenu();
             LivesManager.AddLife();
             base.OffUI();
            
         }
+
         public void NextLevelButton()
         {
             AudioController.PlaySound(AudioController.Sounds.buttonSound);
@@ -92,7 +95,7 @@ namespace TitleGame
             //{
             //    GameController.LoadNextLevel();
             //});
-           
+            UIController.HidePage<UIGame>();
             GameController.LoadNextLevel();
             base.OffUI();
 

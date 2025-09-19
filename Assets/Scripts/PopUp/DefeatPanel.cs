@@ -19,18 +19,21 @@ namespace TitleGame
             AudioController.PlaySound(AudioController.Sounds.buttonSound);
 
 
-            if (LivesManager.Lives > 0)
+            if (LivesManager.Lives <= 0)
             {
-                LivesManager.RemoveLife();
-
-                //UIController.HidePage<UIGameOver>();
-                base.OffUI();
-                GameController.ReplayLevel();
+   
+                PopupManager.Instance.OnUI(PopupCode.AddLivesPanel);
+                return;
             }
             else
             {
                 // addLivesPanel.Show();
-                PopupManager.Instance.OnUI(PopupCode.AddLivesPanel);
+                LivesManager.RemoveLife();
+
+                //UIController.HidePage<UIGameOver>();
+                base.OffUI();
+
+                GameController.ReplayLevel();
             }
         }
 
@@ -42,6 +45,7 @@ namespace TitleGame
             //{
             //    GameController.ReturnToMenu();
             //});
+            UIController.HidePage<UIGame>();
             GameController.ReturnToMenu();
         }
     }

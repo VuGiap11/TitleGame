@@ -16,7 +16,7 @@ namespace TitleGame
         [SerializeField] RectTransform safeAreaRectTransform;
 
         [Space]
-        [SerializeField] RectTransform tapToPlayRect;
+        [SerializeField] RectTransform tapToPlayRect, iconGame;
         [SerializeField] Button playButton;
         [SerializeField] TMP_Text playButtonText;
 
@@ -33,7 +33,7 @@ namespace TitleGame
         [Space]
         [SerializeField] UINoAdsPopUp noAdsPopUp;
 
-        private TweenCase tapToPlayPingPong;
+        private TweenCase tapToPlayPingPong,iconPingPong;
         private TweenCase showHideStoreAdButtonDelayTweenCase;
 
         private void OnEnable()
@@ -129,13 +129,16 @@ namespace TitleGame
         {
             if (tapToPlayPingPong != null && tapToPlayPingPong.IsActive)
                 tapToPlayPingPong.Kill();
-
+            if (iconPingPong != null && iconPingPong.IsActive)
+                iconPingPong.Kill();
             if (immediately)
             {
                 tapToPlayRect.localScale = Vector3.one;
 
                 tapToPlayPingPong = tapToPlayRect.transform.DOPingPongScale(1.0f, 1.05f, 0.9f, Ease.Type.QuadIn, Ease.Type.QuadOut, unscaledTime: true);
-
+                
+                this.iconGame.localScale = Vector3.one;
+                this.iconPingPong = iconGame.transform.DOPingPongScale(1.0f, 1.05f, 0.9f, Ease.Type.QuadIn, Ease.Type.QuadOut, unscaledTime: true);
                 return;
             }
 
@@ -148,22 +151,31 @@ namespace TitleGame
                 tapToPlayPingPong = tapToPlayRect.transform.DOPingPongScale(1.0f, 1.05f, 0.9f, Ease.Type.QuadIn, Ease.Type.QuadOut, unscaledTime: true);
 
             });
+            iconGame.localScale = Vector3.zero;
 
+            iconGame.DOPushScale(Vector3.one * 1.2f, Vector3.one, 0.35f, 0.2f, Ease.Type.CubicOut, Ease.Type.CubicIn).OnComplete(delegate
+            {
+
+                iconPingPong = iconGame.transform.DOPingPongScale(1.0f, 1.05f, 0.9f, Ease.Type.QuadIn, Ease.Type.QuadOut, unscaledTime: true);
+
+            });
         }
 
         public void HideTapToPlayButton(bool immediately = false)
         {
             if (tapToPlayPingPong != null && tapToPlayPingPong.IsActive)
                 tapToPlayPingPong.Kill();
+            if (iconPingPong != null && iconPingPong.IsActive)
+                iconPingPong.Kill();
 
             if (immediately)
             {
                 tapToPlayRect.localScale = Vector3.zero;
-
+                iconGame.localScale = Vector3.zero;
                 return;
             }
 
-            tapToPlayRect.DOScale(Vector3.zero, 0.3f).SetEasing(Ease.Type.CubicIn);
+            iconGame.DOScale(Vector3.zero, 0.3f).SetEasing(Ease.Type.CubicIn);
         }
 
         #endregion
