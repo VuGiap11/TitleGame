@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
 using TitleGame.Map;
+using NTPackage.UI;
+
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -126,11 +128,11 @@ namespace TitleGame
             if (!isGameActive)
                 return;
 
-            UIController.HidePage<UIGame>(() =>
-            {
-                UIController.ShowPage<UIComplete>();
-            });
-
+            //UIController.HidePage<UIGame>(() =>
+            //{
+            //    UIController.ShowPage<UIComplete>();
+            //});
+            PopupManager.Instance.OnUI(PopupCode.VictoryPanel);
             isGameActive = false;
         }
 
@@ -139,11 +141,11 @@ namespace TitleGame
             if (!isGameActive)
                 return;
 
-            UIController.HidePage<UIGame>(() =>
-            {
-                UIController.ShowPage<UIGameOver>();
-            });
-
+            //UIController.HidePage<UIGame>(() =>
+            //{
+            //    UIController.ShowPage<UIGameOver>();
+            //});
+            PopupManager.Instance.OnUI(PopupCode.DefeatPanel);
             isGameActive = false;
         }
 

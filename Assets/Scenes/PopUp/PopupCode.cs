@@ -20,5 +20,7 @@ namespace NTPackage.UI
         AddLivesPanel,
         QuitPopUpPanel,
         PopwerUpPurchasePanel,
+        VictoryPanel,
+        DefeatPanel,
     }
 }
