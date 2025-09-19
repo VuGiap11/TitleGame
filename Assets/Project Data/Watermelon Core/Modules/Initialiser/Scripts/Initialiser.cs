@@ -61,7 +61,8 @@ namespace TitleGame
 
                 if (loadingScene)
                 {
-                    GameLoading.LoadGameScene();
+                    //GameLoading.LoadGameScene();
+                    MainMenuController.Instance.StartGame();
                 }
                 else
                 {

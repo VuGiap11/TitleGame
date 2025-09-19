@@ -27,7 +27,7 @@ namespace TitleGame
         }
         public void Start()
         {
-            StartGame();
+           // StartGame();
             //RoteIcoinSetting();
         }
         public void StartGame()

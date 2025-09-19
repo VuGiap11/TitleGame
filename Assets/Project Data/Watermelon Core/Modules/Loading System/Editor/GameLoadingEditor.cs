@@ -8,7 +8,7 @@ namespace TitleGame
     {
         private static readonly string[] INIT_SCENES = new string[]
         {
-            "Init"
+            "Splash"
         };
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
